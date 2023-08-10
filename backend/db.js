@@ -21,6 +21,10 @@ const connectDB = async () => {
       
       const Contractors = await mongoose.connection.db.collection("Contractors").find({}).toArray();
       global.Contractors = Contractors;
+
+      // const Costs = await mongoose.connection.db.collection("Costs").find({}).toArray();
+      // global.Contractors = Contractors;
+      // console.log(Costs)
       // console.log(Contractors)
       
     } catch (error) {

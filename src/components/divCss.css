@@ -1,0 +1,9 @@
+.sticky-div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0; /* You can change this to the background color you prefer */
+    padding: 10px;
+    /* Add any other styles you want for the sticky div */
+  }

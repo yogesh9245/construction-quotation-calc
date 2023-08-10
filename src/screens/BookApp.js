@@ -1,17 +1,20 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+// const nodemailer = require('nodemailer');
+
 
 export default function BookApp() {
+
     const location = useLocation();
     const Name = location.state?.Name;
-    const[credentials,setCredentials] = useState({name:"",email:"",phone:"",address:""});
-    const[timeChange,settimeChange] = useState('');
-    const handleSubmit = async (e)=>{
+    const [credentials, setCredentials] = useState({ name: "", email: "", phone: "", address: "" });
+    const [timeChange, settimeChange] = useState('');
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/appointments",{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
+        const response = await fetch("http://localhost:5000/api/appointments", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 name: credentials.name,
@@ -19,22 +22,24 @@ export default function BookApp() {
                 phone: credentials.phone,
                 address: credentials.address,
                 date: timeChange, // Update to use timeChange instead of credentials.date
-                ContractorName:Name
-              }),
+                ContractorName: Name
+            }),
 
         });
         const json = await response.json()
         console.log(json)
 
-        if(!json.success){
+        if (!json.success) {
             alert("Enter valid credentials")
         }
     }
 
-    const handleChange = (e)=>{
-        setCredentials({...credentials,[e.target.name]:e.target.value})
+    
+
+    const handleChange = (e) => {
+        setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
-    const handleTimeChange = (e)=>{
+    const handleTimeChange = (e) => {
         const selectedDate = e.target.value;
         const selectedTimestamp = new Date(selectedDate).getTime();
         settimeChange(selectedTimestamp)
@@ -54,7 +59,7 @@ export default function BookApp() {
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='Type in your email address' value={credentials.email} name='email' onChange={handleChange} />
-                        
+
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPhone" className="form-label">Phone Number</label>
@@ -62,11 +67,11 @@ export default function BookApp() {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputAddress" className="form-label">Address</label>
-                        <input type="text" className="form-control" id="Address" placeholder='Type in your address' value={credentials.address} name='address' onChange={handleChange}/>
+                        <input type="text" className="form-control" id="Address" placeholder='Type in your address' value={credentials.address} name='address' onChange={handleChange} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputDate" className="form-label">Select the Date</label>
-                        <input type="date" className="form-control" id="date" value={credentials.date} name='date' onChange={handleTimeChange}/>
+                        <input type="date" className="form-control" id="date" value={credentials.date} name='date' onChange={handleTimeChange} />
                     </div>
                     <button type="submit" className="btn btn-primary" >Submit</button>
                 </form>

@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
-
-
+import { useNavigate } from 'react-router-dom';
 export default function Quotation() {
     const [selectedType, setSelectedType] = useState('');
     const [city, setCity] = useState('');
+    const navigate = useNavigate();
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const dataToPass = {
+          selectedType,
+          city,
+        };
+        console.log(selectedType);
+        navigate('/cost-calculation', { state: dataToPass });
+      };
     return (
         <div className='container'>
             <div>
                 Welcome to the Quotation Calculation Services
             </div>
-            <form method='POST'>
+            <form method='POST' onSubmit={handleFormSubmit}>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />

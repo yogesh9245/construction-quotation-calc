@@ -16,6 +16,7 @@ import Appointment from './screens/Appointment';
 import { CartProvider } from './components/ContextReducer';
 import BookApp from './screens/BookApp';
 import MyBooking from './screens/MyBooking';
+import CostCalculation from './screens/CostCalculation';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path='/Appointment with the Contractor' element={<Appointment />} />
           <Route exact path='/bookapp' element={<BookApp />} />
           <Route exact path='/mybookings' element={<MyBooking />} />
+          <Route exact path='/cost-calculation' element={<CostCalculation />} />
         </Routes>
       </Router>
     </CartProvider>

@@ -3,9 +3,10 @@ import Navbar from '../components/Navbar'
 // import Footer from '../components/Footer'
 import Card from '../components/Card'
 import Carousel from '../components/Carousel'
+import TypingEffect from '../components/TypingEffect'
 
 export default function Home() {
-
+    const text = "WELCOME TO OUR SERVICES";
     // const [HouseCategory, setHouseCategory] = useState([])
     // const [Quotations, setQuotations] = useState([])
     const [Services, setServices] = useState([])
@@ -27,27 +28,30 @@ export default function Home() {
 
     useEffect(() => {
         loadData()
-    },[])
+    }, [])
     return (
         <div>
-            <div> <Navbar /> </div>
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 20 }} > <Navbar /> </div>
             <div> <Carousel /> </div>
             <div >
-                <div>
-                    Welcome to our Services
+                <div className='d-flex flex-row justify-content-center fs-2'>
+                    <TypingEffect text={text} />
+                    {/* Welcome to our Services */}
                 </div>
+                {(!localStorage.getItem("authToken")) ?
+                    <div> Please login into the system first </div> : " "}
                 {
-                    Services !== []
-                    ? Services.map((data)=>{
-                        return(
-                            <div className='d-inline-flex row mb-3'>
-                            <div key={data._id} className='fs-3 m-3 col-12 col-md-6 col-lg-3'> {data.serviceName} 
-                            <Card serviceName = {data.serviceName} desc = {data.description}/>
-                            </div>
-                            </div>
-                        )
-                    })
-                    : ""
+                    Services !== [] && localStorage.getItem("authToken") != null
+                        ? Services.map((data) => {
+                            return (
+                                <div className='d-inline-flex row '>
+                                    <div key={data._id} className='m-3 col-3 col-md-6 col-lg-3 container'> {data.serviceName}
+                                        <Card serviceName={data.serviceName} desc={data.description} />
+                                    </div>
+                                </div>
+                            )
+                        })
+                        : ""
                 }
             </div>
         </div>
