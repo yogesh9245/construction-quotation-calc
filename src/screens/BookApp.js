@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 // const nodemailer = require('nodemailer');
 
 
 export default function BookApp() {
-
+    let navigate = useNavigate()
     const location = useLocation();
     const Name = location.state?.Name;
     const [credentials, setCredentials] = useState({ name: "", email: "", phone: "", address: "" });
@@ -29,8 +29,13 @@ export default function BookApp() {
         const json = await response.json()
         console.log(json)
 
+
         if (!json.success) {
             alert("Enter valid credentials")
+        }
+        else{
+            console.log("Entered successfully")
+            navigate('/Appointment with the Contractor')
         }
     }
 
