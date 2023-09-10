@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
-
 export default function Navbar() {
 
     const navigate = useNavigate()
@@ -21,6 +20,10 @@ export default function Navbar() {
                         <ul className="navbar-nav me-auto mb-2">
                             <li className="nav-item">
                                 <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link active fs-5" aria-current="page" to="/pricing">Pricing</Link>
                             </li>
 
                             {(localStorage.getItem("authToken")) ?

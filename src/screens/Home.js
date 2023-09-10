@@ -31,6 +31,7 @@ export default function Home() {
     }, [])
     return (
         <>
+
         <div>
             <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 20 }}>
                 <Navbar />
