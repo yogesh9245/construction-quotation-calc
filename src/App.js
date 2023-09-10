@@ -17,6 +17,7 @@ import { CartProvider } from './components/ContextReducer';
 import BookApp from './screens/BookApp';
 import MyBooking from './screens/MyBooking';
 import CostCalculation from './screens/CostCalculation';
+import Pricing from './screens/Pricing';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route exact path='/bookapp' element={<BookApp />} />
           <Route exact path='/mybookings' element={<MyBooking />} />
           <Route exact path='/cost-calculation' element={<CostCalculation />} />
+          <Route exact path='/pricing' element={<Pricing />} />
         </Routes>
       </Router>
     </CartProvider>

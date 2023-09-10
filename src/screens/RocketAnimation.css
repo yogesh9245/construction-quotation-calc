@@ -1,0 +1,22 @@
+/* RocketAnimation.css */
+
+@keyframes rocketAnimation {
+    0% {
+      transform: translateY(100%); /* Start from the bottom of the container */
+    }
+    100% {
+      transform: translateY(-100%); /* Travel to the top of the container */
+    }
+  }
+  
+  .rocket {
+    position: absolute;
+    width: 40px; /* Adjust the width and height to match your rocket image size */
+    height: 60px;
+    animation: rocketAnimation 3s linear infinite; /* Use 'linear' timing function for smooth animation */
+  }
+  .container {
+    height: 100%; /* Set the height according to your design */
+    position: relative;
+  }
+  
