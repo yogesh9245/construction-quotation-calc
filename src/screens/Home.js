@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Card from '../components/Card'
 import Carousel from '../components/Carousel'
 import TypingEffect from '../components/TypingEffect'
-
+import './BackgroundAnimation.css'
 export default function Home() {
     const text = "WELCOME TO OUR SERVICES";
     // const [HouseCategory, setHouseCategory] = useState([])
@@ -30,30 +30,32 @@ export default function Home() {
         loadData()
     }, [])
     return (
+        <>
         <div>
-            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 20 }} > <Navbar /> </div>
-            <div> <Carousel /> </div>
-            <div >
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 20 }}>
+                <Navbar />
+            </div>
+            <div>
+                <Carousel />
+            </div>
+            <div>
                 <div className='d-flex flex-row justify-content-center fs-2'>
                     <TypingEffect text={text} />
-                    {/* Welcome to our Services */}
                 </div>
-                {(!localStorage.getItem("authToken")) ?
-                    <div> Please login into the system first </div> : " "}
-                {
-                    Services !== [] && localStorage.getItem("authToken") != null
-                        ? Services.map((data) => {
-                            return (
-                                <div className='d-inline-flex row '>
-                                    <div key={data._id} className='m-3 col-3 col-md-6 col-lg-3 container'> {data.serviceName}
-                                        <Card serviceName={data.serviceName} desc={data.description} />
-                                    </div>
-                                </div>
-                            )
-                        })
-                        : ""
-                }
+                {(!localStorage.getItem("authToken")) ? (
+                    <div>Please login into the system first</div>
+                ) : (
+                    <div className="row justify-content-center m-3">
+                        {Services.map((data) => (
+                            <div key={data._id} className='col-12 col-md-6 col-lg-4 mb-3'>
+                                {data.serviceName}
+                                <Card serviceName={data.serviceName} desc={data.description} />
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
+        </>
     )
 }
