@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Navbar from '../components/Navbar';
 
 export default function MyBooking() {
     const [bookData, setbookData] = useState([])
@@ -37,6 +38,8 @@ export default function MyBooking() {
     }, []);
 
     return (
+        <>
+        <Navbar/>
         <div>
             <p>Email: {localStorage.getItem('userEmail')} </p>
 
@@ -71,5 +74,6 @@ export default function MyBooking() {
                 </tbody>
             </table>
         </div>
+        </>
     )
 }

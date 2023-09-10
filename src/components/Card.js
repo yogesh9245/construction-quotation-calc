@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 export default function Card(props) {
     return (
-        <div>
+    
             <div className="card mt-3" style={{ "width": "18rem", "maxHeight": "200px", "maxWidth": "600px" }}>
                 <img src="https://source.unsplash.com/random?600x200" className="card-img-top" alt="..." />
                 <div className="card-body">
@@ -10,6 +10,7 @@ export default function Card(props) {
                     <p className="card-text"> {props.desc} </p>
                 </div>
             </div>
-        </div>
+
+ 
     )
 }

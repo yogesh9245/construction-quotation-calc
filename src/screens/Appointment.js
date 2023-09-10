@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CardContractor from '../components/CardContractor';
+import Navbar from '../components/Navbar';
 export default function Appointment() {
 
   const [Contractors, setContractors] = useState([])
@@ -24,6 +25,8 @@ export default function Appointment() {
   }, [])
 
   return (
+    <>
+    <Navbar/>
     <div>
       {
         Contractors !== []
@@ -39,5 +42,6 @@ export default function Appointment() {
           : ""
       }
     </div>
+    </>
   )
 }

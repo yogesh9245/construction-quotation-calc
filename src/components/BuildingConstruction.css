@@ -1,0 +1,22 @@
+.building-construction {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 300px; /* Adjust the height of the construction area */
+  }
+  
+  .building {
+    width: 100px; /* Adjust the width of the building */
+    height: 100%;
+    background-color: #ccc;
+    position: relative;
+  }
+  
+  .building-progress {
+    background-color: #3498db; /* Adjust the color of the progress */
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transition: height 0.5s ease-in-out;
+  }
+  
