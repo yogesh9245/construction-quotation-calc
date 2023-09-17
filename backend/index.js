@@ -19,6 +19,8 @@ app.use('/api',require('./Routes/CreateUser'));
 app.use('/api',require('./Routes/DisplayData'));
 app.use('/api',require('./Routes/GetCosts'));
 app.use('/api',require('./Routes/sendmail'));
+app.use('/api',require('./Routes/Order'));
+// app.use('/api',require('./Routes/Payments'));
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
