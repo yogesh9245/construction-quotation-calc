@@ -9,17 +9,26 @@ export default function Pricing() {
       key: "rzp_test_g5Unq2KbUR4wwp",
       amount: data.amount,
       currency: data.currency,
+      name: "Hello world",
+      description: "Hello world",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbCDZZfnTfo6P6OVAR4PEbLGDBPs3hkIocmS18c9Y6MA&s",
       order_id: data.id,
       handler:async(response)=>{
         try {
           const verifyUrl = "http://localhost:5000/api/verify";
-          const {data} = await fetch(verifyUrl,response);
-          console.log(data);
+          const datares = await fetch(verifyUrl,response);
+          const res = datares.json();
+          console.log(res);
         } catch (error) {
-          
+          console.log(error);
         }
-      }
-    }
+      },
+      theme: {
+        color: "2244ee",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open()
   }
   const handlePayment = async()=>{
     try {
@@ -33,7 +42,7 @@ export default function Pricing() {
       })
       const response = await data.json();
       console.log(response);
-      // initPayment(data.data)
+      initPayment(response.data)
     } catch (error) {
       console.log(error);
     }
